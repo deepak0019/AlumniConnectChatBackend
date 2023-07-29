@@ -13,7 +13,4 @@
   "scripts": {
     "start": "nodemon backend/server.js"
   }
-  "engines": {
-    "node": "^18.14.2"
-  }
 }
