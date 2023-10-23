@@ -1,16 +1,19 @@
 const mongoose = require('mongoose')
 
-const connectDB = async()=>{
-    try {
-        const conn = await mongoose.connect(process.env.mongoURI,{
-            useNewUrlParser:true,
-            useUnifiedTopology:true,
-        });
-        console.log(`MongoDB connected: ${conn.connection.host}`)
-    } catch (error) {
-        console.log(`Error:${error.message}`)
-        process.exit()
-    }
+connectDB = async() => {
+await mongoose.connect(process.env.mongoURI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    family: 4 // Use IPv4, skip trying IPv6
+})
+.then(console.log("connection success!!"))
+.catch((err)=>{
+    console.log("No db connection!!")
+    console.log(err);
+    process.exit();
+});
 }
 
+
 module.exports = connectDB;
+
